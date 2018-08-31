@@ -1,0 +1,119 @@
+// MARGINS
+$margins: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70;
+
+@mixin clear-default() {
+   display: block;
+   width: 100%;
+   padding: 0;
+   clear: both;
+}
+
+@mixin margin-default() {
+   display: block;
+   width: 100%;
+   padding: 0;
+   clear: both;
+   position: relative;
+   min-height: 1px;
+   height: 1px;
+   max-height: 1px;
+   line-height: 1px;
+   box-sizing: border-box;
+   zoom: 1;
+   &:after,
+   &:before {
+      content: '';
+      width: 100%;
+      display: block;
+      clear: both;
+   }
+}
+
+@mixin system-margins ($divider: 'mobile') {
+   $num-divider: null;
+
+   @if $divider == 'mobile' {
+      $num-divider: 4;
+   }
+   @else if $divider == 'tablet' {
+      $num-divider: 2;
+   }
+   @else if $divider == 'desktop' {
+      $num-divider: 2;
+   }
+   @else {
+      $num-divider: 0;
+   }
+
+   @each $margin in $margins {
+      .m#{$margin} {
+         @include margin-default;
+         margin: ($margin / $num-divider) + px 0;
+      }
+
+      @if $divider=='mobile' {
+         .m#{$margin}-only-mobile {
+            @include margin-default;
+            margin: ($margin / $num-divider) + px 0;
+         }
+
+         .clear-only-mobile {
+            @include clear-default();
+         }
+
+         .m#{$margin}-only-tablet,
+         .m#{$margin}-only-desktop,
+         .clear-only-tablet,
+         .clear-only-desktop {
+            display: none;
+         }
+      }
+
+      @if $divider=='tablet' {
+         .m#{$margin}-only-tablet {
+            @include margin-default;
+            margin: ($margin / $num-divider) + px 0;
+         }
+
+         .clear-only-tablet {
+            @include clear-default();
+         }
+
+         .m#{$margin}-only-mobile,
+         .m#{$margin}-only-desktop,
+         .clear-only-mobile,
+         .clear-only-desktop {
+            display: none;
+         }
+      }
+
+      @if $divider=='desktop' {
+         .m#{$margin}-only-desktop {
+            @include margin-default;
+            margin: ($margin / $num-divider) + px 0;
+         }
+
+         .clear-only-desktop {
+            @include clear-default();
+         }
+
+         .m#{$margin}-only-mobile,
+         .m#{$margin}-only-tablet,
+         .clear-only-mobile,
+         .clear-only-tablet {
+            display: none;
+         }
+      }
+   }
+}
+
+// Bootstrap 4 breakpoints
+@media screen and (min-width: 992px) {
+   @include system-margins('desktop');
+}
+@media screen and (max-width: 991.98px) {
+   @include system-margins('tablet');
+}
+@media screen and (max-width: 767.98px) {
+   @include system-margins('mobile');
+}

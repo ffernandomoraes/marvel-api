@@ -1,0 +1,65 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+   width: 100%;
+   height: 100%;
+   font-family: 'Roboto';
+   font-size: 16px;
+   line-height: 16px;
+   font-weight: 400;
+}
+
+:focus {
+   outline: none;
+}
+
+button:focus, a:focus, input:focus {
+   outline: none;
+}
+
+input, select {
+   -webkit-appearance: none;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+   color: #5b5b5f !important;
+}
+
+a {
+   text-decoration: none;
+   &:hover,
+   &:focus,
+   &:visited {
+      text-decoration: none;
+   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+b,
+i {
+   margin: 0;
+}
+
+textarea {
+   resize: none;
+}
+
+.clear {
+   clear: both;
+}
+
+.noPadding {
+   padding: 0;
+}
