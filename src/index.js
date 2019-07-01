@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from 'components/Layout';
-import Routes from './scenes/routes.js';
+import Routes from 'scenes/routes.js';
 import moment from 'moment';
 
 import 'moment/locale/pt-br';

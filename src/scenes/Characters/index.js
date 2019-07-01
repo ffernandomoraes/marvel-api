@@ -1,5 +1,5 @@
 import React from 'react';
-import { API_MAP, params } from 'helpers';
+import { API_MAP, params } from '../../helpers';
 import axios from 'axios';
 import './index.css';
 
